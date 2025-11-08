@@ -1,5 +1,6 @@
-#include <cstdio>
+#include <stdio.h>
+
 int main() {
-    std::printf("hello from cpp\n");
+    printf("hello from c\n");
     return 0;
 }

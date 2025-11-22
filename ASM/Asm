@@ -1,0 +1,245 @@
+#include <stdio.h>
+#include <math.h>
+
+// 1) ax + b = 0
+void pt_bac1() {
+    float a, b;
+    printf("Nhap a, b: ");
+    scanf("%f%f", &a, &b);
+
+    if (a == 0) {
+        if (b == 0) {
+            printf("Phuong trinh vo so nghiem\n");
+        } else {
+            printf("Phuong trinh vo nghiem\n");
+        }
+    } else {
+        float x = -b / a;
+        printf("Nghiem x = %.2f\n", x);
+    }
+}
+
+// 2) ax^2 + bx + c = 0
+void pt_bac2() {
+    float a, b, c;
+    printf("Nhap a, b, c: ");
+    scanf("%f%f%f", &a, &b, &c);
+
+    if (a == 0) {
+        printf("a = 0 => tro ve phuong trinh bac 1\n");
+        if (b == 0) {
+            if (c == 0) printf("Phuong trinh vo so nghiem\n");
+            else printf("Phuong trinh vo nghiem\n");
+        } else {
+            float x = -c / b;
+            printf("Nghiem x = %.2f\n", x);
+        }
+        return;
+    }
+
+    float delta = b*b - 4*a*c;
+    if (delta < 0) {
+        printf("Phuong trinh vo nghiem\n");
+    } else if (delta == 0) {
+        float x = -b / (2*a);
+        printf("Phuong trinh co nghiem kep x = %.2f\n", x);
+    } else {
+        float x1 = (-b + sqrt(delta)) / (2*a);
+        float x2 = (-b - sqrt(delta)) / (2*a);
+        printf("Phuong trinh co 2 nghiem: x1 = %.2f, x2 = %.2f\n", x1, x2);
+    }
+}
+
+// 3) He 2 phuong trinh 2 an:
+// a1*x + b1*y = c1
+// a2*x + b2*y = c2
+void he_2an() {
+    float a1, b1, c1, a2, b2, c2;
+    printf("Nhap a1, b1, c1: ");
+    scanf("%f%f%f", &a1, &b1, &c1);
+    printf("Nhap a2, b2, c2: ");
+    scanf("%f%f%f", &a2, &b2, &c2);
+
+    float D  = a1*b2 - a2*b1;
+    float Dx = c1*b2 - c2*b1;
+    float Dy = a1*c2 - a2*c1;
+
+    if (D == 0) {
+        if (Dx == 0 && Dy == 0) {
+            printf("He vo so nghiem\n");
+        } else {
+            printf("He vo nghiem\n");
+        }
+    } else {
+        float x = Dx / D;
+        float y = Dy / D;
+        printf("Nghiem: x = %.2f, y = %.2f\n", x, y);
+    }
+}
+
+// 4) ax + by + c = 0 (giai theo y)
+void pt_theo_y() {
+    float a, b, c, x;
+    printf("Nhap a, b, c: ");
+    scanf("%f%f%f", &a, &b, &c);
+    printf("Nhap x: ");
+    scanf("%f", &x);
+
+    if (b == 0) {
+        printf("b = 0 => khong the giai theo y\n");
+    } else {
+        float y = (-a*x - c) / b;
+        printf("Voi x = %.2f => y = %.2f\n", x, y);
+    }
+}
+
+// 5) (x / a) + b = c
+void pt_dang1() {
+    float a, b, c;
+    printf("Phuong trinh: x/a + b = c\n");
+    printf("Nhap a, b, c: ");
+    scanf("%f%f%f", &a, &b, &c);
+
+    if (a == 0) {
+        printf("a = 0 => khong hop le\n");
+    } else {
+        float x = (c - b) * a;
+        printf("Nghiem x = %.2f\n", x);
+    }
+}
+
+// 6) (ax + b) / c = d
+void pt_dang2() {
+    float a, b, c, d;
+    printf("Phuong trinh: (ax + b)/c = d\n");
+    printf("Nhap a, b, c, d: ");
+    scanf("%f%f%f%f", &a, &b, &c, &d);
+
+    if (c == 0) {
+        printf("c = 0 => khong hop le\n");
+    } else if (a == 0) {
+        if (b == c*d) printf("Vo so nghiem\n");
+        else printf("Vo nghiem\n");
+    } else {
+        float x = (c*d - b) / a;
+        printf("Nghiem x = %.2f\n", x);
+    }
+}
+
+// 7) ax^2 + b = 0
+void pt_dang3() {
+    float a, b;
+    printf("Phuong trinh: ax^2 + b = 0\n");
+    printf("Nhap a, b: ");
+    scanf("%f%f", &a, &b);
+
+    if (a == 0) {
+        printf("a = 0 => khong phai bac 2\n");
+    } else {
+        float rhs = -b / a;
+        if (rhs < 0) {
+            printf("Vo nghiem (x^2 khong am)\n");
+        } else {
+            float x1 = sqrt(rhs);
+            float x2 = -sqrt(rhs);
+            printf("Nghiem: x1 = %.2f, x2 = %.2f\n", x1, x2);
+        }
+    }
+}
+
+// 8) ax^2 + bx = 0 => x(ax + b) = 0
+void pt_dang4() {
+    float a, b;
+    printf("Phuong trinh: ax^2 + bx = 0\n");
+    printf("Nhap a, b: ");
+    scanf("%f%f", &a, &b);
+
+    if (a == 0 && b == 0) {
+        printf("Vo so nghiem\n");
+    } else if (a == 0 && b != 0) {
+        printf("Phuong trinh bac 1: x = 0\n");
+    } else {
+        printf("Nghiem x1 = 0\n");
+        float x2 = -b / a;
+        printf("Nghiem x2 = %.2f\n", x2);
+    }
+}
+
+// 9) (x + a)(x + b) = 0
+void pt_dang5() {
+    float a, b;
+    printf("Phuong trinh: (x + a)(x + b) = 0\n");
+    printf("Nhap a, b: ");
+    scanf("%f%f", &a, &b);
+
+    float x1 = -a;
+    float x2 = -b;
+    printf("Nghiem: x1 = %.2f, x2 = %.2f\n", x1, x2);
+}
+
+// 10) |ax + b| = c
+void pt_tri_tuyet_doi() {
+    float a, b, c;
+    printf("Phuong trinh: |ax + b| = c\n");
+    printf("Nhap a, b, c: ");
+    scanf("%f%f%f", &a, &b, &c);
+
+    if (c < 0) {
+        printf("c < 0 => vo nghiem\n");
+        return;
+    }
+    if (a == 0) {
+        if (fabs(b) == c) printf("Vo so nghiem (ax + b = hang so)\n");
+        else printf("Vo nghiem\n");
+        return;
+    }
+
+    // ax + b = c  hoac  ax + b = -c
+    float x1 = (c - b) / a;
+    float x2 = (-c - b) / a;
+
+    if (c == 0) {
+        // |ax + b| = 0 => ax + b = 0
+        printf("Chi co 1 nghiem: x = %.2f\n", x1);
+    } else {
+        printf("Hai nghiem: x1 = %.2f, x2 = %.2f\n", x1, x2);
+    }
+}
+
+int main() {
+    int choice;
+    do {
+        printf("\n===== MENU GIAI PHUONG TRINH =====\n");
+        printf("1. Giai phuong trinh bac 1: ax + b = 0\n");
+        printf("2. Giai phuong trinh bac 2: ax^2 + bx + c = 0\n");
+        printf("3. Giai he 2 phuong trinh 2 an\n");
+        printf("4. Giai phuong trinh ax + by + c = 0 (tim y theo x)\n");
+        printf("5. Giai phuong trinh x/a + b = c\n");
+        printf("6. Giai phuong trinh (ax + b)/c = d\n");
+        printf("7. Giai phuong trinh ax^2 + b = 0\n");
+        printf("8. Giai phuong trinh ax^2 + bx = 0\n");
+        printf("9. Giai phuong trinh (x + a)(x + b) = 0\n");
+        printf("10. Giai phuong trinh |ax + b| = c\n");
+        printf("0. Thoat\n");
+        printf("Chon chuc nang: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: pt_bac1(); break;
+            case 2: pt_bac2(); break;
+            case 3: he_2an(); break;
+            case 4: pt_theo_y(); break;
+            case 5: pt_dang1(); break;
+            case 6: pt_dang2(); break;
+            case 7: pt_dang3(); break;
+            case 8: pt_dang4(); break;
+            case 9: pt_dang5(); break;
+            case 10: pt_tri_tuyet_doi(); break;
+            case 0: printf("Thoat chuong trinh.\n"); break;
+            default: printf("Lua chon khong hop le!\n");
+        }
+
+    } while (choice != 0);
+
+    return 0;
+}

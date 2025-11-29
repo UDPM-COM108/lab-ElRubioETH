@@ -16,7 +16,6 @@ int main(void) {
 
 	for (int i = 0; i < n; ++i) {
 		if (scanf("%d", &x) != 1) {
-			// not enough input
 			return 0;
 		}
 		if (i == 0) {
@@ -31,7 +30,6 @@ int main(void) {
 		}
 	}
 
-	// BAI 1: average of numbers divisible by 3
 	if (countDiv3 > 0) {
 		double avg = (double)sumDiv3 / countDiv3;
 		printf("Bai 1 - Trung binh cac so chia het cho 3: %.2f\n", avg);
@@ -39,7 +37,6 @@ int main(void) {
 		printf("Bai 1 - Khong co so nao chia het cho 3 trong mang.\n");
 	}
 
-	// BAI 2: min and max
 	printf("Bai 2 - Gia tri nho nhat: %d\n", minVal);
 	printf("Bai 2 - Gia tri lon nhat: %d\n", maxVal);
 

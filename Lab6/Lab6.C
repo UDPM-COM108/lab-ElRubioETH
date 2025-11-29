@@ -1,45 +1,93 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main(void) {
-	int n;
-	if (scanf("%d", &n) != 1) return 0;
-	if (n <= 0) {
-		printf("Mang rong hoac n <= 0\n");
-		return 0;
-	}
+int main() {
+    int n, arr[100];
+    int choice;
 
-	int x;
-	long long sumDiv3 = 0;
-	int countDiv3 = 0;
-	int minVal = 0, maxVal = 0;
+    do {
+        printf("\n====== MENU ======\n");
+        printf("1. Tinh trung binh tong cac so chia het cho 3 trong mang\n");
+        printf("2. Tim gia tri lon nhat va nho nhat trong mang\n");
+        printf("3. Hoan vi 2 so\n");
+        printf("4. Thoat\n");
+        printf("Moi ban chon: ");
+        scanf("%d", &choice);
 
-	for (int i = 0; i < n; ++i) {
-		if (scanf("%d", &x) != 1) {
-			return 0;
-		}
-		if (i == 0) {
-			minVal = maxVal = x;
-		} else {
-			if (x < minVal) minVal = x;
-			if (x > maxVal) maxVal = x;
-		}
-		if (x % 3 == 0) {
-			sumDiv3 += x;
-			++countDiv3;
-		}
-	}
+        switch(choice) {
 
-	if (countDiv3 > 0) {
-		double avg = (double)sumDiv3 / countDiv3;
-		printf("Bai 1 - Trung binh cac so chia het cho 3: %.2f\n", avg);
-	} else {
-		printf("Bai 1 - Khong co so nao chia het cho 3 trong mang.\n");
-	}
+        // ===== BÀI 1 =====
+        case 1: {
+            printf("Nhap so luong phan tu n: ");
+            scanf("%d", &n);
 
-	printf("Bai 2 - Gia tri nho nhat: %d\n", minVal);
-	printf("Bai 2 - Gia tri lon nhat: %d\n", maxVal);
+            printf("Nhap mang: ");
+            for(int i = 0; i < n; i++) {
+                scanf("%d", &arr[i]);
+            }
 
-	return 0;
+            int sum = 0, count = 0;
+            for(int i = 0; i < n; i++) {
+                if(arr[i] % 3 == 0) {
+                    sum += arr[i];
+                    count++;
+                }
+            }
+
+            if(count == 0)
+                printf("Khong co so nao chia het cho 3.\n");
+            else
+                printf("Trung binh = %.2f\n", (float)sum / count);
+
+            break;
+        }
+
+        // ===== BÀI 2 =====
+        case 2: {
+            printf("Nhap so luong phan tu n: ");
+            scanf("%d", &n);
+
+            printf("Nhap mang: ");
+            for(int i = 0; i < n; i++) {
+                scanf("%d", &arr[i]);
+            }
+
+            int min = arr[0], max = arr[0];
+            for(int i = 1; i < n; i++) {
+                if(arr[i] < min) min = arr[i];
+                if(arr[i] > max) max = arr[i];
+            }
+
+            printf("Gia tri nho nhat: %d\n", min);
+            printf("Gia tri lon nhat: %d\n", max);
+
+            break;
+        }
+
+        // ===== BÀI 3: HOÁN VỊ =====
+        case 3: {
+            int x, y, temp;
+            printf("Nhap x: ");
+            scanf("%d", &x);
+            printf("Nhap y: ");
+            scanf("%d", &y);
+
+            temp = x;
+            x = y;
+            y = temp;
+
+            printf("Sau khi hoan vi: x = %d, y = %d\n", x, y);
+            break;
+        }
+
+        case 4:
+            printf("Thoat chuong trinh...\n");
+            break;
+
+        default:
+            printf("Lua chon khong hop le!\n");
+        }
+
+    } while(choice != 4);
+
+    return 0;
 }
-

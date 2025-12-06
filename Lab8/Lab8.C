@@ -14,7 +14,7 @@ int main() {
 
     printf("Nhap so sinh vien: ");
     scanf("%d", &n);
-    getchar(); // an Enter sau khi nhap n
+    getchar(); 
 
     // --- BAI 1: NHAP SINH VIEN ---
     for (int i = 0; i < n; i++) {
@@ -22,20 +22,20 @@ int main() {
 
         printf("Nhap MSSV: ");
         scanf("%s", sv[i].mssv);
-        getchar(); // an Enter sau MSSV
+        getchar(); 
 
         printf("Nhap ten: ");
         fgets(sv[i].tenSV, sizeof(sv[i].tenSV), stdin);
-        sv[i].tenSV[strcspn(sv[i].tenSV, "\n")] = '\0'; // xoa '\n'
+        sv[i].tenSV[strcspn(sv[i].tenSV, "\n")] = '\0'; 
 
         printf("Nhap nganh hoc: ");
         fgets(sv[i].nganhHoc, sizeof(sv[i].nganhHoc), stdin);
-        sv[i].nganhHoc[strcspn(sv[i].nganhHoc, "\n")] = '\0'; // xoa '\n'
+        sv[i].nganhHoc[strcspn(sv[i].nganhHoc, "\n")] = '\0'; 
 
         printf("Nhap diem TB: ");
         scanf("%f", &sv[i].diemTB);
-        getchar(); // an Enter sau diemTB
-    } // <-- BỊ THIẾU NGOẶC NÀY Ở CODE CŨ
+        getchar(); 
+    } 
 
     // --- BAI 2: SAP XEP SINH VIEN THEO DIEM TANG DAN ---
     for (int i = 0; i < n - 1; i++) {

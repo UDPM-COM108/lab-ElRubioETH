@@ -121,7 +121,7 @@ void laiSuatVay() {
         long tong = lai + goc;
         conLai -= goc;
 
-        printf("%2d   | %10ld  | %10ld  | %10ld | %10ld\n", 
+        printf("%2d  | %10ld  | %10ld  | %10ld | %10ld\n", 
             i, lai, goc, tong, conLai);
     }
 }

@@ -13,7 +13,6 @@ void kiemTraSoNguyen() {
         printf("So %d la so chan.\n", n);
     else
         printf("So %d la so le.\n", n);
-
     if (n > 0)
         printf("So %d la so duong.\n", n);
     else if (n < 0)
@@ -122,7 +121,7 @@ void laiSuatVay() {
         long tong = lai + goc;
         conLai -= goc;
 
-        printf("%2d     | %10ld  | %10ld  | %10ld | %10ld\n", 
+        printf("%2d   | %10ld  | %10ld  | %10ld | %10ld\n", 
             i, lai, goc, tong, conLai);
     }
 }
